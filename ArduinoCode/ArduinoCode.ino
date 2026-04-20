@@ -110,7 +110,7 @@ void loop()
           Serial.println(i);
           // xử lý 
           colorX = i;
-          servo[colorX].write(POS1); 
+          //servo[colorX].write(POS1); 
         }
       }
       programColor = 1;
@@ -127,7 +127,10 @@ void loop()
   if(programColor){
     if(!wait1 && digitalRead(sensor[colorX]) == 0){
       wait1 = 1;
+      
       t2 = millis() + TO1;
+      delay(1500);
+      servo[colorX].write(POS1);
     }
     if(wait1 && millis()>t2){
       servo[colorX].write(POS0);
